@@ -65,25 +65,13 @@ function requestUserInfo(client, id) {
 
 function popUp(){
     
-
-    let firstName = arguments[0];
-    let lastName = arguments[1];
-    let Email = arguments[2];
-    sessionStorage.setItem("firstName", firstName);
-    sessionStorage.setItem("lastName", lastName);
-    sessionStorage.setItem("Email", Email);
-    
-    let leadWindow = window.open("./test.html", "", "toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=300,height=200");
+    let leadWindow = window.open("", "", "toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=300,height=200");
    
-    /*leadWindow.document.body.innerHTML = 
-    " <h1>Enter Lead Here</h1> <p><form action=\"test.html\"  method=\"post\" name=\"addLead\">    First name: <input id=\"firstName\" type=\"text\" name=\"FirstName\" value=\'"+arguments[0]+"\' size=\"25\">\n    Last name: <input id=\"lastName\" type=\"text\" value=\'"+arguments[1]+"\' name=\"LastName\" size=\"25\">\n    Email: <input id=\"email\" value=\'"+arguments[2]+"\' type=\"text\" name=\"Email\" value=\'\' size=\"31\"><input type=\"submit\" onclick=\"return closeSub();\" value=\"Submit\"></p></form> <script type=\"text/javascript\"> alert(\"TEST\"); </script>"*/ 
+    leadWindow.document.body.innerHTML = 
+    "<head><style> h1 { font-size:20px; margin: 0px 5px } input {display:inline-block; float:left} input[type=submit] {display:inline-block;float:none;text-decoration:none;} label {display:inline-block; width:80px; text-align:right; float:left; clear:left; } #addLead { margin: 0px 0px; display:block;} .LeadSF{ font-size: 12px }</style></head><h1>Enter Lead Here</h1> <p><form action=\"https://45.62.239.240/Test2.php\"  method=\"post\" name=\"addLead\">   <label>First name:</label> <input id=\"firstName\" class=\"LeadSF\" type=\"text\" name=\"FirstName\" value=\'"+arguments[0]+"\' size=\"25\"></p> <p> <label>Last name:</label> <input id=\"lastName\" class=\"LeadSF\" type=\"text\" value=\'"+arguments[1]+"\' name=\"LastName\" size=\"25\"></p> <p><label>Email:</label> <input id=\"email\" class=\"LeadSF\" value=\'"+arguments[2]+"\' type=\"text\" name=\"Email\" size=\"25\"></p><input type=\"submit\" value=\"Submit\"></form>" 
 	leadWindow.document.close();
 }
 
 
 
 
-function closeSub() {
-	document.forms['addLead'].submit();
-	window.close();
-}
