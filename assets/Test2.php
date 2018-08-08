@@ -9,6 +9,9 @@
 if (isset($_POST['submit'])) {
 
     echo "This Works!";
+} else 
+    echo "Not Yet!"
+
     /*$data = array(
   'LastName' => 'Hu',
   'FirstName' => 'Joseph',
