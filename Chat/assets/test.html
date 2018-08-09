@@ -1,0 +1,24 @@
+<html>
+<head>
+
+<script src="https://cdn.jsdelivr.net/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+    	document.getElementById('firstName').value = sessionStorage.firstName;
+    	document.getElementById('lastName').value = sessionStorage.lastName;
+    	document.getElementById('Email').value = sessionStorage.Email;
+	});     
+
+</script>
+</head>
+
+
+<body>
+
+<h1>Enter Lead Here</h1> 
+
+<p><form action="./Test2.php"  method="post" name="addLead">    First name: <input id="firstName" type="text" name="FirstName" size="25">    Last name: <input id="lastName" type="text"name="LastName" size="25">    Email: <input id="Email" type="text" size="31"><input type="submit" onclick="return closeSub();" value="Submit"></p></form> 
+
+</body>
+
+</html>

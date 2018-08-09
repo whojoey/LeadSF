@@ -1,13 +1,7 @@
 $(function () {
 	var client = ZAFClient.init();
 	client.invoke('resize', { width: '100%', height: '130px' });
-	client.get('ticket.requester.id').then(
-	function(data) {
-		var user_id = data['ticket.requester.id'];
-		//console.log('Requester id is ' + user_id);
-		requestUserInfo(client, user_id);
-	}
-);
+	
 	//showInfo();
 	//showError();
 });
