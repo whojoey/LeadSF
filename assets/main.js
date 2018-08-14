@@ -1,6 +1,6 @@
 $(function () {
 	var client = ZAFClient.init();
-	client.invoke('resize', { width: '100%', height: '130px' });
+	client.invoke('resize', { width: '100%', height: '100px' });
 	client.get('ticket.requester.id').then(
 	function(data) {
 		var user_id = data['ticket.requester.id'];
@@ -88,6 +88,17 @@ input[type=text]:focus {\
     background-color: #ddd;\
     outline: none;\
 }\
+textarea {\
+    width: 100%;\
+    padding-left:15px;\
+    padding-top:15px;\
+    padding-bottom:5em;\
+    padding-right: 5em;\
+    margin: 5px 0 0px 0;\
+    display: inline-block;\
+    border: none;\
+    background: #f1f1f1;\
+}\
 hr {\
     border: 1px solid #f1f1f1;\
     margin-bottom: 15px;\
@@ -108,17 +119,6 @@ button:hover {\
     opacity:1;\
 }\
 \
-#desc {\
-    width: 100%;\
-    padding-left:15;\
-    padding-top:15;\
-    padding-bottom:10em;\
-    padding-right: 15em;\
-    margin: 5px 0 0px 0;\
-    display: inline-block;\
-    border: none;\
-    background: #f1f1f1;\
-}\
 /* Extra styles for the cancel button */\
 .cancelbtn {\
     padding: 14px 20px;\
@@ -171,13 +171,22 @@ button:hover {\
     <label for=\"languagesSpoken\"><b>Lanugages Spoken</b></label>\
     <input type=\"text\" placeholder=\"Enter Languages Spoken\" name=\"languagesSpoken\">\
     <label for=\"additionalDetails\"><b>Additional Details</b></label>\
-    <input id=\"desc\" type=\"text\" placeholder=\"Enter any additional details\" name=\"desc\">\
+    <textarea name=\"desc\" placeholder=\"Enter any additional details here\"></textarea>\
+    <input type=\"hidden\" value=\'"+arguments[3]+"\'>\
     <p style=\"font-size:75%;color:red;float:right\">* indicates a required field</p>\
     <div class=\"clearfix\" style=\"width:100%;\">\
       <button type=\"submit\" class=\"signupbtn\">Submit</button>\
     </div>\
   </div>\
 </form>\
+<script>\
+document.getElementById(\"addLead\").onkeypress = function(e) {\
+  var key = e.charCode || e.keyCode || 0;\
+  if (key == 13) {\
+    e.preventDefault();\
+  }\
+}\
+</script>\
 </body>\
 </html>"
 	leadWindow.document.close();

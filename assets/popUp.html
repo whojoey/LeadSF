@@ -19,6 +19,18 @@ input[type=text]:focus {
     outline: none;
 }
 
+textarea {
+    width: 100%;
+    padding-left:15px;
+    padding-top:15px;
+    padding-bottom:15em;
+    padding-right: 15em;
+    margin: 5px 0 0px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
 hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
@@ -41,15 +53,7 @@ button:hover {
 }
 
 #desc {
-    width: 100%;
-    padding-left:15;
-    padding-top:15;
-    padding-bottom:15em;
-    padding-right: 15em;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
+
 }
 /* Extra styles for the cancel button */
 .cancelbtn {
@@ -58,8 +62,8 @@ button:hover {
 }
 
 /* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
+.signupbtn {
+  display: inline-blcok
   width: 50%;
 }
 
@@ -77,17 +81,17 @@ button:hover {
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
-    .cancelbtn, .signupbtn {
+    .signupbtn {
        width: 100%;
     }
 }
 </style>
 <body>
 
-<form action="/action_page.php" style="border:1px solid #ccc">
+<form action="https://45.62.239.240/Test2.php" method="post" id="addLead" name="addLead" style="border:1px solid #ccc">
   <div class="container">
     <h1>Create a Lead</h1>
-    <p>Please fill in this form to create lead in Salesforce.</p>
+    <p style="font-size:10%">Please fill in this form to create lead in Salesforce.</p>
     <hr>
 
     <label for="firstName"><b>First name*</b></label>
@@ -115,11 +119,11 @@ button:hover {
     <input type="text" placeholder="Enter Languages Spoken" name="languagesSpoken">
 
     <label for="additionalDetails"><b>Additional Details</b></label>
-    <input id="desc" type="text" placeholder="Enter any additional details" name="desc">
+    <textarea name="desc" placeholder="Enter any additional details here"></textarea>
     
-    <p style="font-size:75%;color:red">* indicates a required field</p>
+    <p style="font-size:75%;color:red;float:right">* indicates a required field</p>
 
-    <div class="clearfix">
+    <div class="clearfix" style="width:100%;">
       <button type="submit" class="signupbtn">Sign Up</button>
     </div>
   </div>

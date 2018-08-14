@@ -1,7 +1,3 @@
-subfooter {
-  font-size: 10px;
-  padding-top: 5px;
-}
 .data {
   color: #000000;
   padding-left: 6px;
@@ -17,8 +13,6 @@ subfooter {
 	font-weight: bold;
 	text-decoration: underline;
 }
-
-
 
 #content td {
 	font-size: 12px;
