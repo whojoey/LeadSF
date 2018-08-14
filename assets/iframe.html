@@ -1,34 +1,15 @@
-
-
 <html>
 <head>
   <meta charset="utf-8">
   <!-- http://garden.zendesk.com -->
   <link href="https://cdn.jsdelivr.net/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="main.css" rel="stylesheet">
-  <script type="text/javascript">
-        // Wait for the page to load first
-        document.onload = function() {
-
-          let a = document.getElementById("openLeadWin");
-          let fname = $("#fname").html();
-          let lname = $("#lname").html();
-          let email = $("#email").html();
-
-          a.onclick = function() {
-             console.log("test")
-          popUp(fname,lname,email);
-
-          return false;
-
-          }
-        }
-    </script>
+ 
 </head>
 <body>
   <div id="content"></div>
-  <footer>
-    <a href="https://mysite.github.io/support" target="_blank">Report bugs</a>
+  <div id="footer">
+    <a style="font-size:10px" href="https://mysite.github.io/support" target="_blank">Report bugs</a>
   </footer>
   <!-- https://github.com/zendesk/zendesk_app_framework_sdk --> 
 
@@ -37,8 +18,7 @@
     <table>
     <tr>
       <td>Customer:</td>
-      <td class="data" id="fname">{{firstName}}</td>
-      <td class="space" id="lname">{{lastName}}</td>
+      <td class="data"><span id="fname">{{firstName}}</span> <span id="lname">{{lastName}}</span></td>
     </tr>
     <tr>
       <td>Email:</td>
@@ -49,12 +29,12 @@
       <td class="data" id="time">{{created_at}}</td>
     </tr>
     <tr>
-      <td>Last signed in:</td>
-      <td class="data">{{last_login_at}}</td>
+      <td>Agent:</td>
+      <td class="data" id="agent">{{agent}}</td>
     </tr>
     </table>
     <br>
-            <center><a class="link" id="openLeadWin" href="#" onclick="popUp(document.getElementById('fname').innerHTML, document.getElementById('lname').innerHTML, document.getElementById('email').innerHTML)">Create lead</a></center>
+            <center><a class="link" id="openLeadWin" href="#" onclick="popUp(document.getElementById('fname').innerHTML, document.getElementById('lname').innerHTML, document.getElementById('email').innerHTML, document.getElementById('agent').innerHTML)">Create lead</a></center>
   </script>
 
   <!-- ERROR TEMPLATE -->

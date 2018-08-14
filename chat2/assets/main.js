@@ -1,22 +1,23 @@
 $(function () {
-	var client = ZAFClient.init();
-	client.invoke('resize', { width: '100%', height: '130px' });
-	client.get('visitor').then(
-	function(data) {
-		var user = data['visitor'];
-		console.log('Requester id is ' + user.name);
-		showInfo(user);
-	}
+    var client = ZAFClient.init();
+    client.invoke('resize', { width: '100%', height: '130px' });
+    var theagent = client.get('agents');
+    client.get(['visitor','agents']).then(function(data) {
+        var user = data['visitor'];
+        var agentID = Object.keys(data['agents'])[0];
+        var agentEmail = data['agents'][agentID].email;
+        showInfo(user, agentEmail);
+    }
 );
-	//showInfo();
-	//showError();
+    //showInfo();
+    //showError();
 });
 
-function showInfo(data) {
-	var fullName = data.name;
-	var names = fullName.split(" ");
-	var firstName = names[0];
-	var lastName = names[names.length -1]
+function showInfo(data, email) {
+    var fullName = data.name;
+    var names = fullName.split(" ");
+    var firstName = names[0];
+    var lastName = names[names.length -1]
 
   var requester_data = {
     'name': data.name,
@@ -24,6 +25,7 @@ function showInfo(data) {
     'lastName': lastName,
     'email': data.email,
     'phone': data.phone,
+    'agent': email
     
   };
 
@@ -34,113 +36,138 @@ function showInfo(data) {
 }
 
 
-
 function popUp(){
     
     
     
-    let leadWindow = window.open("", "", "toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=400,height=400");
+    let leadWindow = window.open("", "", "toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=400,height=1600");
    
     leadWindow.document.body.innerHTML = 
-    "<head>\
-    	<style>\
-	    	h1{\
-				font-size:20px;\
-				margin: 0px 5px;\
-			}\
-			input\
-			{\
-				display:inline-block;\
-				float:center\
-			}\
-			input[type=details]\
-			{\
-				display:inline-block;\
-				float:none;\
-				text-decoration:none;\
-				height:100px;\
-			}\
-			input[type=submit]\
-			{\
-				display:inline-block;\
-				float:none;\
-				text-decoration:none;\
-				padding-left:0;\
-				padding-top:0;\
-				padding-bottom:0.4em;\
-				padding-right: 0.4em;\
-			}\
-			label\
-			{\
-				display:inline-block;\
-				width:200px;\
-				text-align:right;\
-				float:center;\
-				clear:left;\
-			}\
-			#addLead\
-			{\
-				margin: 0px 0px;\
-				display:block;\
-			}\
-			.LeadSF{\
-				font-size: 12px\
-			}\
-		</style>\
-	</head>\
-	<body>\
-		<center>\
-			<h2 style=\"font-family:helvetica;\">Create a lead</h2>\
-			<form action=\"https://45.62.239.240/Test2.php\"  method=\"post\" name=\"addLead\" style=\"font-family:helvetica;\">\
-			\
-			<!-- First Name -->\
-			<label>First name:</label>\
-			<input id=\"firstName\" class=\"LeadSF\" type=\"text\" name=\"FirstName\" value=\'"+arguments[0]+"\' size=\"25\">\
-			<br>\
-			<!-- Last Name -->\
-			<label>Last name:</label>\
-			<input id=\"lastName\" class=\"LeadSF\" type=\"text\" value=\'"+arguments[1]+"\' name=\"LastName\" size=\"25\">\
-			<br>\
-			<!-- Email -->\
-			<label>Email:</label>\
-			<input id=\"email\" class=\"LeadSF\" value=\'"+arguments[2]+"\' type=\"email\" name=\"Email\" size=\"25\">\
-			<br>\
-			<!-- Phone Number -->\
-			<label>Phone Number:</label>\
-			<input id=\"phoneNumber\" class=\"LeadSF\" type=\"phoneNumber\" name=\"phoneNumber\" size=\"25\">\
-			<br>\
-			<!-- Company -->\
-			<label>Company:</label>\
-			<input id=\"company\" class=\"LeadSF\" type=\"company\" name=\"company\" size=\"25\">\
-			<br>\
-			<!-- City -->\
-			<label>City:</label>\
-			<input id=\"city\" class=\"LeadSF\" type=\"city\" name=\"city\" size=\"25\">\
-			<br>\
-			<!-- Number of Employees -->\
-			<label>Number of Employees:</label>\
-			<input id=\"numOfEmployees\" class=\"LeadSF\" type=\"numOfEmployees\" name=\"numOfEmployees\" size=\"25\">\
-			<br>\
-			<!-- Languages Spoken -->\
-			<label>Languages Spoken:</label>\
-			<input id=\"languagesSpoken\" class=\"LeadSF\" type=\"languagesSpoken\" name=\"languagesSpoken\" size=\"25\">\
-			<br>\
-			<!-- Additional Details -->\
-			<label>Additional Details:</label>\
-			<input id=\"additionalDetails\" class=\"LeadSF\" type=\"details\" name=\"additionalDetails\" size=\"25\">\
-			<br>\
-			<br>\
-			<input type=\"submit\" value=\"Submit\">\
-			</form>\
-		</center>\
-	</body>"
+    "<!DOCTYPE html>\
+<html>\
+<style>\
+body {font-family: Arial, Helvetica, sans-serif;}\
+* {box-sizing: border-box}\
+/* Full-width input fields */\
+input[type=text], input[type=email], input[type=number]{\
+    width: 100%;\
+    padding: 15px;\
+    margin: 5px 0 11px 0;\
+    display: inline-block;\
+    border: none;\
+    background: #f1f1f1;\
+}\
+input[type=text]:focus, input[type=number]:focus{\
+    background-color: #ddd;\
+    outline: none;\
+}\
+textarea {\
+    width: 100%;\
+    padding-left:15px;\
+    padding-top:15px;\
+    padding-bottom:5em;\
+    padding-right: 5em;\
+    margin: 5px 0 0px 0;\
+    display: inline-block;\
+    border: none;\
+    background: #f1f1f1;\
+}\
+hr {\
+    border: 1px solid #f1f1f1;\
+    margin-bottom: 15px;\
+}\
+/* Set a style for all buttons */\
+button {\
+    background-color: #0099ff;\
+    color: white;\
+    padding: 14px 20px;\
+    margin: 8px 0;\
+    border: none;\
+    cursor: pointer;\
+    width: 100%;\
+    opacity: 0.9;\
+}\
+\
+button:hover {\
+    opacity:1;\
+}\
+\
+/* Extra styles for the cancel button */\
+.cancelbtn {\
+    padding: 14px 20px;\
+    background-color: #f44336;\
+}\
+/* Float cancel and signup buttons and add an equal width */\
+.signupbtn {\
+  display: inline-block\
+  width: 50%;\
+}\
+\
+/* Add padding to container elements */\
+.container {\
+    padding: 0px 8px;\
+}\
+\
+/* Clear floats */\
+.clearfix::after {\
+    content: \"\";\
+    clear: both;\
+    display: table;\
+}\
+/* Change styles for cancel button and signup button on extra small screens */\
+@media screen and (max-width: 300px) {\
+    .signupbtn {\
+       width: 100%;\
+    }\
+}\
+</style>\
+<body>\
+<form action=\"https://45.62.239.240/Test2.php\" method=\"post\" name=\"addLead\" style=\"border:1px solid #ccc\">\
+  <div class=\"container\">\
+    <h2>Create a Lead</h2>\
+    <p>Please fill in this form to create lead in Salesforce.</p>\
+    <hr>\
+    <label for=\"firstName\"><b>First name <font size=3 color=red>*</font></b></label>\
+    <input type=\"text\" placeholder=\"Enter First name\" name=\"FirstName\" value=\'"+arguments[0]+"\' required>\
+    <label for=\"lastName\"><b>Last name <font size=3 color=red>*</font></b></label>\
+    <input type=\"text\" placeholder=\"Enter Last Name\" name=\"LastName\" value=\'"+arguments[1]+"\' required>\
+    <label for=\"Email\"><b>Email <font size=3 color=red>*</font></b></label>\
+    <input type=\"email\" placeholder=\"Enter Email\" name=\"Email\" value=\'"+arguments[2]+"\' required>\
+    <label for=\"phoneNumber\"><b>Phone number</b></label>\
+    <input type=\"text\" placeholder=\"Enter Phone Number\" name=\"phoneNumber\">\
+    <label for=\"Company\"><b>Company</b></label>\
+    <input type=\"text\" placeholder=\"Enter Company\" name=\"company\">\
+    <label for=\"City\"><b>City</b></label>\
+    <input type=\"text\" placeholder=\"Enter City\" name=\"city\">\
+    <label for=\"numberOfEmployees\"><b>Number of Employees</b></label>\
+    <input type=\"number\" placeholder=\"Enter Number of Employees\" name=\"numOfEmployees\">\
+    <label for=\"languagesSpoken\"><b>Languages Spoken</b></label>\
+    <input type=\"text\" placeholder=\"Enter Languages Spoken\" name=\"languagesSpoken\">\
+    <label for=\"additionalDetails\"><b>Additional Details</b></label>\
+    <textarea name=\"desc\" placeholder=\"Enter any additional details here\"></textarea>\
+    <input type=\"hidden\" name=\"agent\" value=\'"+arguments[3]+"\'>\
+    <p style=\"font-size:75%;color:red;float:right\">* indicates a required field</p>\
+    <div class=\"clearfix\" style=\"width:100%;\">\
+      <button type=\"submit\" class=\"signupbtn\">Submit</button>\
+    </div>\
+  </div>\
+</form>\
+<script>\
+document.getElementById(\"addLead\").onkeypress = function(e) {\
+  var key = e.charCode || e.keyCode || 0;\
+  if (key == 13) {\
+    e.preventDefault();\
+  }\
+}\
+</script>\
+</body>\
+</html>"
 	leadWindow.document.close();
 }
 
 
 
 	
-
 
 
 
