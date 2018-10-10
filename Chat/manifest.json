@@ -1,18 +1,16 @@
 {
-  "name": "Create a Lead in Salesforce",
+  "name": "ChatLeadSF",
   "author": {
-    "name": "Stefan Francisco, Joseph Hu",
-    "email": "stefan.francisco@zoom.us",
+    "name": "Joseph Hu",
+    "email": "joseph.hu@zoom.us",
     "url": ""
   },
   "defaultLocale": "en",
   "private": true,
-
   "location": {
     "chat": {
-      "chat_sidebar": "/assets/iframe.html"
+      "chat_sidebar": "assets/iframe.html"
     }
-    
   },
   "version": "1.0",
   "frameworkVersion": "2.0"

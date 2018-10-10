@@ -2,7 +2,9 @@ $(function () {
 	var client = ZAFClient.init();
 	client.invoke('resize', { width: '100%', height: '100px' });
 	client.get(['ticket.requester.id','ticket.assignee.user.email']).then(
-	function(data) {
+	
+  //This is pulling the agent data in ZenDesk Ticket Support 
+  function(data) {
 		var user_id = data['ticket.requester.id'];
 		var assignee = data['ticket.assignee.user.email'];
 		requestUserInfo(client, user_id, assignee);
