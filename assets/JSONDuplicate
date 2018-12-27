@@ -1,0 +1,128 @@
+{
+    "id": null,
+    "errors": [
+        {
+            "extendedErrorDetails": [],
+            "fields": [],
+            "message": "A duplicate lead with matching email and last name already exists. Use one of these records?",
+            "statusCode": "DUPLICATES_DETECTED",
+            "duplicateResult": {
+                "duplicateRule": "Duplicate_Lead_Matcher",
+                "errorMessage": "A duplicate lead with matching email and last name already exists. Use one of these records?",
+                "duplicateRuleEntityType": "Lead",
+                "allowSave": false,
+                "matchResults": [
+                    {
+                        "rule": "Duplicate_Lead_Matcher",
+                        "matchEngine": "ExactMatchEngine",
+                        "success": true,
+                        "size": 1,
+                        "matchRecords": [
+                            {
+                                "matchConfidence": 100,
+                                "record": {
+                                    "children": [
+                                        {
+                                            "children": [],
+                                            "typedChildren": [],
+                                            "xmlType": null,
+                                            "value": "Lead",
+                                            "name": {
+                                                "prefix": "",
+                                                "localPart": "type",
+                                                "namespaceURI": "urn:sobject.partner.soap.sforce.com"
+                                            },
+                                            "defaultNamespace": null
+                                        },
+                                        {
+                                            "children": [],
+                                            "typedChildren": [],
+                                            "xmlType": null,
+                                            "value": "00Q0q000002G3ctEAC",
+                                            "name": {
+                                                "prefix": "",
+                                                "localPart": "Id",
+                                                "namespaceURI": "urn:sobject.partner.soap.sforce.com"
+                                            },
+                                            "defaultNamespace": null
+                                        },
+                                        {
+                                            "children": [],
+                                            "typedChildren": [],
+                                            "xmlType": null,
+                                            "value": "00Q0q000002G3ctEAC",
+                                            "name": {
+                                                "prefix": "",
+                                                "localPart": "Id",
+                                                "namespaceURI": "urn:sobject.partner.soap.sforce.com"
+                                            },
+                                            "defaultNamespace": null
+                                        }
+                                    ],
+                                    "typedChildren": [
+                                        {
+                                            "children": [],
+                                            "typedChildren": [],
+                                            "xmlType": null,
+                                            "value": "Lead",
+                                            "name": {
+                                                "prefix": "",
+                                                "localPart": "type",
+                                                "namespaceURI": "urn:sobject.partner.soap.sforce.com"
+                                            },
+                                            "defaultNamespace": null
+                                        },
+                                        {
+                                            "children": [],
+                                            "typedChildren": [],
+                                            "xmlType": null,
+                                            "value": "00Q0q000002G3ctEAC",
+                                            "name": {
+                                                "prefix": "",
+                                                "localPart": "Id",
+                                                "namespaceURI": "urn:sobject.partner.soap.sforce.com"
+                                            },
+                                            "defaultNamespace": null
+                                        },
+                                        {
+                                            "children": [],
+                                            "typedChildren": [],
+                                            "xmlType": null,
+                                            "value": "00Q0q000002G3ctEAC",
+                                            "name": {
+                                                "prefix": "",
+                                                "localPart": "Id",
+                                                "namespaceURI": "urn:sobject.partner.soap.sforce.com"
+                                            },
+                                            "defaultNamespace": null
+                                        }
+                                    ],
+                                    "type": "Lead",
+                                    "fieldsToNull": [],
+                                    "xmlType": {
+                                        "prefix": "",
+                                        "localPart": "sObject",
+                                        "namespaceURI": "urn:sobject.partner.soap.sforce.com"
+                                    },
+                                    "value": null,
+                                    "name": {
+                                        "prefix": "",
+                                        "localPart": "record",
+                                        "namespaceURI": "urn:partner.soap.sforce.com"
+                                    },
+                                    "defaultNamespace": null,
+                                    "id": "00Q0q000002G3ctEAC"
+                                },
+                                "additionalInformation": [],
+                                "fieldDiffs": []
+                            }
+                        ],
+                        "entityType": "Lead",
+                        "errors": []
+                    }
+                ]
+            }
+        }
+    ],
+    "success": false
+}
